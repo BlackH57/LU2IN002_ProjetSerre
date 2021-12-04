@@ -4,8 +4,7 @@ public class Navet extends Legume{
     private static int cpt=1;
     
     public Navet(){
-        super("Navet"+" n°"+cpt,poidsg,prixkg);
-        System.out.println("un navet est planté");
+        super("Navet"+" n°"+cpt,poidsg,prixkg,"graine");
         cpt++;
     }
     public double getPrix(){

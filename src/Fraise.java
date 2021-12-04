@@ -4,7 +4,7 @@ public class Fraise extends Fruit{
     private static int cpt=1;
     
     public Fraise(){
-        super("Fraise"+" n°"+cpt,poidsg,prixkg);
+        super("Fraise"+" n°"+cpt,poidsg,prixkg,"graine");
         System.out.println("un fraisier est planté");
         cpt++;
     }

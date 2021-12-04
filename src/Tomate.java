@@ -4,7 +4,7 @@ public class Tomate extends Fruit {
     private static int cpt=1;
     
     public Tomate(){
-        super("Tomate"+" n°"+cpt,poidsg,prixkg);
+        super("Tomate"+" n°"+cpt,poidsg,prixkg,"graine");
         System.out.println("un plant de tomate est planté");
         cpt++;
     }

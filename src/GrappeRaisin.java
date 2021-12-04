@@ -4,7 +4,7 @@ public class GrappeRaisin extends Fruit{
     private static int cpt=1;
     
     public GrappeRaisin(){
-        super("GrappeRaisin"+" n°"+cpt,poidsg,prixkg);
+        super("GrappeRaisin"+" n°"+cpt,poidsg,prixkg,"graine");
         System.out.println("une vigne est plantée");
         cpt++;
     }

@@ -4,8 +4,7 @@ public class Poireau extends Legume {
     private static int cpt=1;
     
     public Poireau(){
-        super("Poireau"+" n°"+cpt,poidsg,prixkg);
-        System.out.println("un poireau est planté");
+        super("Poireau"+" n°"+cpt,poidsg,prixkg,"graine");
         cpt++;
     }
     public double getPrix(){
