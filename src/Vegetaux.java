@@ -3,22 +3,25 @@ public abstract class Vegetaux{
     private double poidsg;
     private double prixkg;
     private String etat;
+    public static int nbVegetaux;
 
     public Vegetaux(String nom,double poids,double prixPoids,String etat){
         this.nom=nom;
         this.poidsg=poids;
         this.prixkg=prixPoids;
         this.etat="graine";
-
+        nbVegetaux++;
     }
-    public void Pousser(){
-        if(this.etat=="mur") this.etat="perime";
+    
+
+	public void Pousser(){
+        if(this.etat=="mûr") this.etat="perime";
         if(this.etat=="preLeg") this.etat="mûr";
         if(this.etat=="graine") this.etat="preLeg";
         
     }
     public String toString(){
-        return nom+" : "+poidsg+ " g, "+prixkg+" € : "+etat;
+        return nom+" : "  +poidsg+ " g, "+prixkg+"€ : "+etat;
     }
 
     // Accesseurs 
@@ -28,6 +31,6 @@ public abstract class Vegetaux{
     }
     public String getEtat(){
         return etat;
-    }
+    }   
 
 }
