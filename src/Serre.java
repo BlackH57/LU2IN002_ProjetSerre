@@ -1,5 +1,5 @@
 public class Serre{
-    public final int taille = 10;
+    public final int taille = 3;
     private Vegetaux[][] plantation = new Vegetaux[taille][taille];
     private static int nbVegetaux=0;
     private static int x=0,y=0;
@@ -7,7 +7,7 @@ public class Serre{
     public Serre(){
         for(int i=0;i<taille;i++){
             for(int j=0;j<taille;j++){
-                plantation[i][j]=new Friche("friche",0,0,"Vide");
+                plantation[i][j]=new Friche();
             }
         }    
     }
@@ -32,12 +32,33 @@ public class Serre{
     public void recolter(){
         for(int i=0;i<taille;i++){
             for(int j=0;j<taille;j++){
-                if(plantation[i][j].getEtat()=="mur"){
-                    plantation[i][j]= new Friche("vide",0,0,"Vide");
-                    nbVegetaux--;
+                if(!(plantation[i][j] instanceof Friche)){
+
+                    if(plantation[i][j].getEtat()=="mûr"){
+                        plantation[i][j]= new Friche();
+                        nbVegetaux--;
+                    }
+                    else {
+                        System.out.println("Vegetal pas encore mur");
+                    }
                 }
-                else {
-                    System.out.println("Vegetal pas encore mur");
+            
+            }
+        }
+    }
+
+    public void rafraichirSerre(){
+        for(int i=0;i<taille;i++){
+            for(int j=0;j<taille;j++){
+                if(!(plantation[i][j] instanceof Friche)){
+
+                    if(plantation[i][j].getEtat()=="perime"){
+                        plantation[i][j]= new Friche();
+                        nbVegetaux--;
+                    }
+                    else {
+                        plantation[i][j].Pousser();
+                    }
                 }
             }
         }
