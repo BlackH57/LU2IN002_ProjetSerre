@@ -65,7 +65,7 @@ public class Serre{
            			if(plantation[i][j].getEtat() == "mur") {
            				if(stock.stocker(plantation[i][j]));
            					plantation[i][j] = null;
-           					Vegetaux.nbVegetaux--;
+           					nbVegetaux--;
            			}
            			else System.out.println("Pas encore mur");
             	}
