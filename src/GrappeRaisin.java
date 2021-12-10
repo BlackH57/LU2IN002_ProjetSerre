@@ -1,4 +1,4 @@
-public class GrappeRaisin extends Fruit{
+public class GrappeRaisin extends Fruit implements Automne{
     private final static double poidsg = (int)(Math.random()*10)+120;
     private final static double prixkg = 5 ;
     private static int cpt=1;
@@ -15,6 +15,23 @@ public class GrappeRaisin extends Fruit{
         return cpt;
     }
 
-    
+    @Override
+    public boolean isAutomne(Serre s) {
+        return s.getSaison() == "Ete";
+    }
+
+    @Override
+    public void pousse(Vegetaux v, Serre s) {
+        if(isAutomne(s)){
+            if(Math.random() < 0.8){
+                v.pousser();
+            }
+        }
+        else{
+            if(Math.random() < 0.1){
+                v.pousser();
+            }
+        }
+    }
     
 }
