@@ -7,9 +7,7 @@ public class Carotte extends Legume {
         super("Carotte"+" n°"+cpt,poidsg,prixkg,"graine");
         cpt++;
     }
-    public double getPrix(){
-        return Carotte.prixkg*Carotte.poidsg/1000;
-    }
+    
 }
     
 

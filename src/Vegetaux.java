@@ -32,5 +32,12 @@ public abstract class Vegetaux{
     public String getEtat(){
         return etat;
     }   
+    public double getPrix(){
+        return this.prixkg*this.poidsg/1000;
+    }
+    public double getPoids(){
+        return this.poidsg*1000;
+
+    }
 
 }

@@ -21,11 +21,27 @@ public class Stockage {
 		return false;
 	}
 	
+	// Accesseurs
+
 	public String toString() {
 		String res = "Stockage : \n";
 		for(Vegetaux v : stockeur) {
 			res += v.toString()+'\n';
 		}
 	return res;
+	}
+
+	public int getTaille(){
+		return taille;
+	}
+
+	public Vegetaux getStockAtIndice(int index){
+		return this.stockeur.get(index);
+
+	}
+	public Vegetaux remove(int index){
+		Vegetaux vtmp= this.stockeur.get(index);
+		this.stockeur.remove(index);
+		return vtmp;
 	}
 }
