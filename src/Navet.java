@@ -7,9 +7,7 @@ public class Navet extends Legume implements Printemps {
         super("Navet"+" n°"+cpt,poidsg,prixkg,"graine");
         cpt++;
     }
-    public double getPrix(){
-        return Navet.prixkg*Navet.poidsg/1000;
-    }
+
     public int getCpt(){
         return cpt;
     }
