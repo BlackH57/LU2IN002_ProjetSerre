@@ -8,9 +8,7 @@ public class Melon extends Fruit  implements Automne, Ete {
         System.out.println("un plant de melon est planté");
         cpt++;
     }
-    public double getPrix(){
-        return Melon.prixkg*Melon.poidsg/1000;
-    }
+
     public int getCpt(){
         return cpt;
     }
