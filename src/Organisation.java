@@ -30,6 +30,18 @@ public class Organisation {
         return 0;    
     }
 
+    public double vente() throws VegetauxException{
+        if(stock.getStockeurSize() == 0){
+            throw new VegetauxException("Rupture de stock");
+        }
+        double benef = stock.getStockAtIndice(0).getPrix();
+        stock.remove(0);
+        recettes += benef;
+        return benef;
+        }
+        
+           
+
     // Accesseurs 
     public Stockage getStockage(){
         return stock;
@@ -39,8 +51,4 @@ public class Organisation {
         return recettes;
     }
 
-
-
 }
-
-

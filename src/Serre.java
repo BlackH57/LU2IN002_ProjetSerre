@@ -153,6 +153,7 @@ public class Serre{
 	public void updateSaison(){
 		if(nbTours%3 == 0){
 			setNextSaison();
+			System.out.println("\nOn pense en " + this.getSaison() + "\n");
 		}
 	}
 
