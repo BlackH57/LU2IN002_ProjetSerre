@@ -1,10 +1,10 @@
 public class Melon extends Fruit  implements Automne, Ete {
-    private final static double poidsg = (int)(Math.random()*10)+150;
+    private final static double poidsg = (int)(Math.random()*50)+750;
     private final static double prixkg = 2 ;
     private static int cpt=1;
     
     public Melon(){
-        super("Melon"+" n°"+cpt,poidsg,prixkg,"graine");
+        super("Melon"+" n°"+cpt,(int)(Math.random()*50)+750,prixkg,"graine");
         System.out.println("un plant de melon est planté");
         cpt++;
     }
