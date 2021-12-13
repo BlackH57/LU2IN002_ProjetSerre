@@ -35,7 +35,10 @@ public class Stockage {
 		return taille;
 	}
 
-	public Vegetaux getStockAtIndice(int index){
+	public Vegetaux getStockAtIndice(int index)  throws VegetauxException{
+		if(index>= this.getStockeurSize()){
+			throw new VegetauxException("Problème d'indice");
+		}
 		return this.stockeur.get(index);
 
 	}
