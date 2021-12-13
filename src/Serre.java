@@ -53,55 +53,57 @@ public class Serre{
 		else System.out.println("Il n'y a plus de place sur la plantation");
 	}
 	
-	public void recolter(Object vegetaux, Stockage stock) {
+	public void recolter(Object vegetaux, Stockage stock)  throws VegetauxException{
 		///On pourra mettre un catch ici
 		if(!(vegetaux instanceof Vegetaux)) {
-			System.out.println("Le premier argument n'est pas un vegetal.");
-			return;
+			throw new VegetauxException("L'objet mis en paramètre n'est pas un végétal");			
 		}
 		for(int i=0;i<taille;i++){
-            for(int j=0;j<taille;j++){
-           		if((plantation[i][j] != null) && (plantation[i][j].getClass() == vegetaux.getClass())) {
-           			if(plantation[i][j].getEtat() == "mur") {
-           				if(stock.stocker(plantation[i][j]));
-           					plantation[i][j] = null;
-           					nbVegetaux--;
-           			}
-           			else System.out.println("Pas encore mur");
-            	}
-            }
+			for(int j=0;j<taille;j++){
+				if((plantation[i][j] != null) && (plantation[i][j].getClass() == vegetaux.getClass())) {
+					if(plantation[i][j].getEtat() == "mûr") {
+						if(stock.stocker(plantation[i][j]));
+							System.out.println(plantation[i][j].toString() + " a été récolté !" );
+							plantation[i][j] = null;
+							Vegetaux.nbVegetaux--;
+					}
+					//else System.out.println("Pas encore mûr");
+				}
+			}
 		}
 	}
 	
-	public void recolter(Stockage stock) {
+	public void recolter(Stockage stock){
 		for(int i=0;i<taille;i++){
-            for(int j=0;j<taille;j++){
-            	if((plantation[i][j] != null) && (plantation[i][j].getEtat() == "mur")) {
-            		if(stock.stocker(plantation[i][j]));
-            			plantation[i][j] = null;
-            			Vegetaux.nbVegetaux--;           	
-            	}
-            	else if(plantation[i][j] instanceof Vegetaux){System.out.println("Pas encore mur");}            	
-            }
-		}
-	}
-	
-	public void rafraichirSerre(){
-        for(int i=0;i<taille;i++){
-            for(int j=0;j<taille;j++){
-                if(plantation[i][j] != null){
+			for(int j=0;j<taille;j++){
+				if((plantation[i][j] != null) && (plantation[i][j].getEtat() == "mûr")) {
+					if(stock.stocker(plantation[i][j])){
+						System.out.println(plantation[i][j].toString() + " a été récolté ! \n" );
+						plantation[i][j] = null;
+						Vegetaux.nbVegetaux--;
 
-                    if(plantation[i][j].getEtat()=="perime"){
-                        plantation[i][j] = null;
-                        Vegetaux.nbVegetaux--;
-                    }
-                    else {
-                        plantation[i][j].pousser();
-                    }
-                }
-            }
-        }
-    }
+					}
+				//else if(plantation[i][j] instanceof Vegetaux){System.out.println("Pas encore mur");}
+				}
+			}
+		}
+	}
+	
+	public void rafraichirSerre(Serre s){
+		for(int i=0;i<taille;i++){
+			for(int j=0;j<taille;j++){
+				if(plantation[i][j] != null){						
+					if(plantation[i][j].getEtat()=="Perime"){
+						plantation[i][j] = null;
+						Vegetaux.nbVegetaux--;
+					}
+					else {
+						plantation[i][j].pousse(plantation[i][j], this);
+					}
+				}
+			}
+		}
+    	}
 
 	// Methodes gestion facteurs exterieurs
 	public void setNextSaison(){
