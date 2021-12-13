@@ -159,7 +159,7 @@ public class Serre{
 	public void nextTour(){
 		nbTours++;
 		updateSaison();
-		rafraichirSerre();
+		rafraichirSerre(this);
 		
 	}
 
