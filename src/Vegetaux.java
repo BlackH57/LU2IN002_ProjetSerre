@@ -14,7 +14,7 @@ public abstract class Vegetaux{
     }
     
 
-	public void Pousser(){
+    public void pousser(){
         if(this.etat=="mûr") this.etat="Perime";
         if(this.etat=="preLeg") this.etat="mûr";
         if(this.etat=="graine") this.etat="preLeg";
