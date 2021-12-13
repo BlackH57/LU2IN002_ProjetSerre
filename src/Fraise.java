@@ -7,9 +7,7 @@ public class Fraise extends Fruit implements Printemps, Ete {
         System.out.println("un fraisier est planté");
         cpt++;
     }
-    public double getPrix(){
-        return Fraise.prixkg*this.getPoids();
-    }
+
     public int getCpt(){
         return cpt;
     }
