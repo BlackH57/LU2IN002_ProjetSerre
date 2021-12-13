@@ -8,7 +8,7 @@ public class Fraise extends Fruit implements Printemps, Ete {
         cpt++;
     }
     public double getPrix(){
-        return Fraise.prixkg*Fraise.poidsg/1000;
+        return Fraise.prixkg*this.getPoids();
     }
     public int getCpt(){
         return cpt;
