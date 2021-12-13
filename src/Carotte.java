@@ -1,10 +1,9 @@
 public class Carotte extends Legume implements Hiver {
-    private final static double poidsg = (int)(Math.random()*11)+100;;
     private final static double prixkg = 0.65 ;
-    private static int cpt=1;
+    private static int cpt=0;
 
     public Carotte(){
-        super("Carotte"+" n°"+cpt,poidsg,prixkg,"graine");
+        super("Carotte"+" n°"+cpt,(int)(Math.random()*11)+100,prixkg,"graine");
         cpt++;
     }
     
