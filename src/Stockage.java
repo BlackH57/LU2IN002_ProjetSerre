@@ -26,7 +26,7 @@ public class Stockage {
 	public String toString() {
 		String res = "Stockage : \n";
 		for(Vegetaux v : stockeur) {
-			res += v.toString()+'\n';
+			res += "\t" + v.toString()+'\n';
 		}
 	return res;
 	}
