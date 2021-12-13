@@ -26,7 +26,14 @@ public class Organisation {
     
     }
 
-
+    // Accesseurs 
+    public Stockage getStockage(){
+        return stock;
+    }
+        
+    public double getRecettes(){
+        return recettes;
+    }
 
 
 
