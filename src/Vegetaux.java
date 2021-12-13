@@ -15,15 +15,16 @@ public abstract class Vegetaux{
     
 
 	public void Pousser(){
-        if(this.etat=="mûr") this.etat="perime";
+        if(this.etat=="mûr") this.etat="Perime";
         if(this.etat=="preLeg") this.etat="mûr";
         if(this.etat=="graine") this.etat="preLeg";
         
     }
     public String toString(){
-        return nom+" : "  +poidsg+ " g, "+prixkg+"€ : "+etat;
+        return nom+" : "  + poidsg + " g, " + prixkg + "€ : " + etat;
     }
 
+    public abstract void pousse(Vegetaux v, Serre s);
     // Accesseurs 
     
     public String getNom(){
@@ -33,10 +34,10 @@ public abstract class Vegetaux{
         return etat;
     }   
     public double getPrix(){
-        return this.prixkg*this.poidsg/1000;
+        return this.prixkg*this.getPoids();
     }
     public double getPoids(){
-        return this.poidsg*1000;
+        return this.poidsg/1000;
 
     }
 
