@@ -1,10 +1,9 @@
 public class Fraise extends Fruit implements Printemps, Ete {
-    private final static double poidsg = (int)(Math.random()*2)+10;
     private final static double prixkg = 7 ;
     private static int cpt=1;
     
     public Fraise(){
-        super("Fraise"+" n°"+cpt,poidsg,prixkg,"graine");
+        super("Fraise"+" n°"+cpt,(int)(Math.random()*2)+10,prixkg,"graine");
         System.out.println("un fraisier est planté");
         cpt++;
     }
