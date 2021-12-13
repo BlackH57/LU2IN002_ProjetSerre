@@ -11,19 +11,23 @@ public class Organisation {
         this(new Stockage());
     }
 
-    public double vente(Vegetaux v){
-        for(int i=0;i<stock.getTaille();i++){
-            if(stock.getStockAtIndice(i).getClass()==v.getClass()){
-                double benef=stock.getStockAtIndice(i).getPrix() * stock.getStockAtIndice(i).getPoids();
-                stock.remove(i);
-                return benef;
-
-            }
-
+    public double vente(Vegetaux v) throws VegetauxException{
+        if(stock.getStockeurSize() == 0){
+            throw new VegetauxException("Rupture de stock");
         }
-        System.out.println("Rupture de stock");
-        return 0;
-    
+        
+        int len = stock.getStockeurSize();
+        
+        for(int i=0;i<len;i++){
+            if(stock.getStockAtIndice(i).getClass()==v.getClass()){
+                double benef=stock.getStockAtIndice(i).getPrix();
+                stock.remove(i);
+                recettes += benef;
+                return benef;
+            }
+        }
+        
+        return 0;    
     }
 
     // Accesseurs 
