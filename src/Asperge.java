@@ -6,9 +6,7 @@ public class Asperge extends Legume implements Automne {
         super("Asperge"+" n°"+cpt,(int)(Math.random()*11)+150,prixkg,"graine");
         cpt++;
     }
-    public double getPrix(){
-        return Asperge.prixkg*this.getPoids();
-    }
+    
     public int getCpt(){
         return cpt;
     }
