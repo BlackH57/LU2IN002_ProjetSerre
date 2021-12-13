@@ -7,7 +7,7 @@ public class Asperge extends Legume implements Automne {
         cpt++;
     }
     public double getPrix(){
-        return Asperge.prixkg*Asperge.this.getPoids();
+        return Asperge.prixkg*this.getPoids();
     }
     public int getCpt(){
         return cpt;
