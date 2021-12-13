@@ -1,6 +1,6 @@
 public class Organisation {
     private Stockage stock;
-    private static double recettes;
+    private double recettes;
     
     public  Organisation(Stockage s){
         this.stock=s;
