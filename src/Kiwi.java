@@ -7,7 +7,7 @@ public class Kiwi extends Fruit implements Hiver {
         cpt++;
     }
     public double getPrix(){
-        return Kiwi.prixkg*Kiwi.poidsg/1000;
+        return Kiwi.prixkg*this.getPoids();
     }
     public int getCpt(){
         return cpt;
