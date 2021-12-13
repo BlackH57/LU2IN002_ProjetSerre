@@ -5,7 +5,8 @@ public class Serre{
 	
 	private String saison;
 	private static int nbTours;
-
+	
+	static int singleton = 0;
 
 	// Constructeur
 	public Serre(int taille, String saison) {
@@ -31,6 +32,42 @@ public class Serre{
 
 	public Serre(){
 		this(3, "Printemps");
+	}
+	
+	public static Serre creationSerre(int taille, String saison){
+		if(singleton == 0){
+			singleton ++;
+			return new Serre(taille, saison);
+		}
+
+		return null;
+	}
+
+	public static Serre creationSerre(int taille){
+		if(singleton == 0){
+			singleton ++;
+			return new Serre(taille);
+		}
+
+		return null;
+	}
+
+	public static Serre creationSerre(String saison){
+		if(singleton == 0){
+			singleton ++;
+			return new Serre();
+		}
+
+		return null;
+	}
+
+	public static Serre creationSerre(){
+		if(singleton == 0){
+			singleton ++;
+			return new Serre();
+		}
+
+		return null;
 	}
 
 	
