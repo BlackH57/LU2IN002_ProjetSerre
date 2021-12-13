@@ -1,10 +1,9 @@
 public class Kiwi extends Fruit implements Hiver {
-    private final static double poidsg=(int)(Math.random()*11)+150;
     private final static double prixkg = 0.49 ;
     private static int cpt=1;
     
     public Kiwi(){
-        super("Kiwi"+" n°"+cpt,poidsg,prixkg,"graine");
+        super("Kiwi"+" n°"+cpt,(int)(Math.random()*11)+150,prixkg,"graine");
         cpt++;
     }
     public double getPrix(){
