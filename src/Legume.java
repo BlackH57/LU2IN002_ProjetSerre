@@ -4,4 +4,5 @@ public abstract class Legume extends Vegetaux{
         super(nom,poids,prixPoids,etat);
     }
     
+    public abstract void pousse(Vegetaux v, Serre s);
 }
