@@ -51,4 +51,8 @@ public class Stockage {
 		this.stockeur.remove(index);
 		return vtmp;
 	}
+
+	public ArrayList<Vegetaux> getStockeur(){
+		return stockeur;
+	}
 }

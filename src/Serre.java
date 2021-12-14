@@ -102,6 +102,7 @@ public class Serre{
 						if(stock.stocker(plantation[i][j]));
 							System.out.println(plantation[i][j].toString() + " a été récolté !" );
 							plantation[i][j] = null;
+							Serre.nbVegetaux--;
 							Vegetaux.nbVegetaux--;
 					}
 					//else System.out.println("Pas encore mûr");
@@ -117,6 +118,7 @@ public class Serre{
 					if(stock.stocker(plantation[i][j])){
 						System.out.println(plantation[i][j].toString() + " a été récolté ! \n" );
 						plantation[i][j] = null;
+						Serre.nbVegetaux--;
 						Vegetaux.nbVegetaux--;
 
 					}
@@ -132,6 +134,7 @@ public class Serre{
 				if(plantation[i][j] != null){						
 					if(plantation[i][j].getEtat()=="Perime"){
 						plantation[i][j] = null;
+						Serre.nbVegetaux--;
 						Vegetaux.nbVegetaux--;
 					}
 					else {
@@ -153,7 +156,7 @@ public class Serre{
 	public void updateSaison(){
 		if(nbTours%3 == 0){
 			setNextSaison();
-			System.out.println("\nOn pense en " + this.getSaison() + "\n");
+			System.out.println("\nOn passe en " + this.getSaison() + "\n");
 		}
 	}
 
@@ -191,5 +194,32 @@ public class Serre{
 
 	public String getSaison(){
 		return this.saison;
+	}
+
+	public String toStringHTML(){
+        String res="<html>+";
+        for(int i=0;i<taille;i++){
+            res+="----";
+        }
+        res+="+<br>";
+        for(int i=0;i<taille;i++){
+            res+="|";
+            for(int j=0;j<taille;j++){
+                Vegetaux v = plantation[i][j];
+                if(v == null) res+= "....";
+                else res+= "."+plantation[i][j].getNom().charAt(0)+plantation[i][j].getEtat().charAt(0) + ".";
+            }
+            res+="|<br>";
+        }
+        res+="+";
+        for(int i=0;i<taille;i++){
+            res+="----";
+        }
+        res+="+<br>";
+        return res;
+    }
+
+	public int getNbVegetaux(){
+		return nbVegetaux;
 	}
 }
