@@ -30,7 +30,7 @@ public class Fraise extends Fruit implements Printemps, Ete {
             }
         }
         else{
-            if(Math.random() < 0.1){
+            if(Math.random() < 0.3){
                 v.pousser();
             }
         }

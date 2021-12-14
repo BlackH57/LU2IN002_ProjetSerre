@@ -2,13 +2,13 @@ public class Organisation {
     private Stockage stock;
     private double recettes;
     
-    public  Organisation(Stockage s){
+    public  Organisation(Stockage s, double recette){
         this.stock=s;
-        this.recettes=0.0;
+        this.recettes=recette;
 
     }
-    public Organisation(){
-        this(new Stockage());
+    public Organisation(double recette){
+        this(new Stockage(), recette);
     }
 
     public double vente(Vegetaux v) throws VegetauxException{
@@ -38,9 +38,13 @@ public class Organisation {
         stock.remove(0);
         recettes += benef;
         return benef;
-        }
+    }
         
-           
+    public double taxe(double pourcentage){
+        double soustrait = recettes*pourcentage/100;
+        this.recettes -= soustrait; 
+        return soustrait;
+    }   
 
     // Accesseurs 
     public Stockage getStockage(){

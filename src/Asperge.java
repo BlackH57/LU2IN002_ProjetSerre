@@ -24,7 +24,7 @@ public class Asperge extends Legume implements Automne {
             }
         }
         else{
-            if(Math.random() < 0.1){
+            if(Math.random() < 0.3){
                 v.pousser();
             }
         }

@@ -20,7 +20,7 @@ public class Carotte extends Legume implements Hiver {
             }
         }
         else{
-            if(Math.random() < 0.1){
+            if(Math.random() < 0.3){
                 v.pousser();
             }
         }

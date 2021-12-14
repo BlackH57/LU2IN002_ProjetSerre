@@ -28,7 +28,7 @@ public class Navet extends Legume implements Printemps {
             }
         }
         else{
-            if(Math.random() < 0.1){
+            if(Math.random() < 0.3){
                 v.pousser();
             }
         }

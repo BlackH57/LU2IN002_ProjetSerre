@@ -10,20 +10,11 @@ public class InterfacesGraphique {
         // creation de la Serre
         Serre s = Serre.creationSerre(taille, "Hiver");
         // creation de l'organisation
-        Organisation org = new Organisation();
-        int nbVegetauxMax = s.taille*s.taille;
-
-        // creation et plantation de vegetaux 
-        //for(int i=0;i<(int)(nbVegetauxMax/2) ;i++){
-        //    s.planter(new Carotte());
-        //    s.planter(new Navet());
-        //}
-
-
-
+        Organisation org = new Organisation(100);
+        
         // Creation fenetre principal
         JFrame mainWindow = new JFrame("fenetre principale");
-        mainWindow.setSize(800,800);
+        mainWindow.setSize(1600,800);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Font monospace30 = new Font("Courier", Font.BOLD,30);
@@ -38,8 +29,12 @@ public class InterfacesGraphique {
         serreLabel.setFont(monospace30);
 
         // Creation label qui contient la saison
-        JLabel saisonLabel = new JLabel("Saison :" + s.getSaison(), JLabel.CENTER);
+        JLabel saisonLabel = new JLabel("Saison : " + s.getSaison(), JLabel.CENTER);
         saisonLabel.setFont(monospace15);
+
+        // Creation label qui contient les recettes
+        JLabel recetteLabel = new JLabel("Recettes : " + (float)((int)(100*org.getRecettes()))/100, JLabel.CENTER);
+        recetteLabel.setFont(monospace15);
 
         // Creation panel serre
         JPanel panelSerre = new JPanel();
@@ -54,7 +49,9 @@ public class InterfacesGraphique {
             public void actionPerformed(ActionEvent e){
                 s.nextTour();
                 serreLabel.setText(s.toStringHTML());
-                saisonLabel.setText(s.getSaison());
+                saisonLabel.setText("Saison : " + s.getSaison());
+                org.taxe(2);
+                recetteLabel.setText("Recettes : " + (float)((int)(100*org.getRecettes()))/100);
             }
         });
         
@@ -76,7 +73,7 @@ public class InterfacesGraphique {
             public void actionPerformed(ActionEvent e){
                 JFrame plante = new JFrame("Planter");
                 plante.setSize(300,300);
-                JLabel question = new JLabel("Que voulez vous plantez?");
+                JLabel question = new JLabel("Que voulez vous plantez?", JLabel.CENTER);
                 question.setVisible(true);
 
                 JButton legume = new JButton("Legume");
@@ -206,28 +203,65 @@ public class InterfacesGraphique {
                 stockageF.setSize(800,500);
 
                 JPanel stockageP = new JPanel();
+
                 GridLayout gridStock = new GridLayout(0,1);
                 stockageP.setLayout(gridStock);
 
-                JLabel labelName = new JLabel("Stockage : ");
+                JScrollPane jsp = new JScrollPane(stockageP);
+                
+
+                JLabel labelName = new JLabel("Stockage : ",JLabel.CENTER);
                 labelName.setVisible(true);
 
+                stockageP.add(labelName);
+
                 for(Vegetaux v: org.getStockage().getStockeur()){
-                    JLabel vegL = new JLabel(v.toString());
+                    JLabel vegL = new JLabel(v.toString(), JLabel.CENTER);
                     vegL.setVisible(true);
 
                     stockageP.add(vegL);
                 }
                 
-                stockageP.add(labelName);
+                jsp.setViewportView( stockageP );
+                jsp.setVisible(true);
+                
+                JButton bVendre = new JButton("Vendre");
+                bVendre.setVisible(true);
+                bVendre.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        double benefVente = 0.0;
+                        while(org.getStockage().getStockeur().size() != 0 ){
+                            try {
+                                benefVente += org.vente();
+                            } catch (VegetauxException e1) {
+                                System.out.println("Erreur de vente : Probablement rupture de stock");
+                            }
+                        }
+                        recetteLabel.setText("Recettes : " + (float)(Math.round(100*org.getRecettes()))/100);
+                        stockageF.dispose();
 
+                        JFrame recetteF = new JFrame("Bénéfice");
+                        recetteF.setSize(300,100);
+                        JLabel recette = new JLabel("Vous avez fais "+(((float)Math.round(100*benefVente)/100) + "e de bénéfice."));
+                        recette.setVisible(true);
+                        
+                        recetteF.add(recette);
+                        recetteF.setVisible(true);
+                    }
+                });
+
+                GridLayout gridStockage = new GridLayout(1,0);
+                stockageF.setLayout(gridStockage);
                 stockageF.setVisible(true);
-                stockageF.add(stockageP);
+
+                stockageF.add(jsp);
+                stockageF.add(bVendre);                
             }
         });
 
         panelInformation.setLayout(gridInformation);
         panelInformation.add(saisonLabel);
+        panelInformation.add(recetteLabel);
         panelInformation.add(bRecolte);
         panelInformation.add(bPlanter);
         panelInformation.add(accessStockage);

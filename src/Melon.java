@@ -30,7 +30,7 @@ public class Melon extends Fruit  implements Automne, Ete {
             }
         }
         else{
-            if(Math.random() < 0.1){
+            if(Math.random() < 0.3){
                 v.pousser();
             }
         }

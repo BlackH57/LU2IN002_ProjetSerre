@@ -6,7 +6,7 @@ public class TestSerre {
         // creation de la Serre
         Serre s = Serre.creationSerre(taille, "Hiver");
         // creation de l'organisation
-        Organisation org = new Organisation();
+        Organisation org = new Organisation(100);
         int nbVegetauxMax = s.taille*s.taille;
 
         // creation et plantation de vegetaux 
